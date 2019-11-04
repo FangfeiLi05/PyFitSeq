@@ -1,19 +1,19 @@
-# FitSeq
+## FitSeq
 
-## What is FitSeq?
+### What is FitSeq?
 
 FitSeq is a Python-based fitness estimation tool for pooled amplicon sequencing studies. FitSeq is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 
-## Installing
+### Installing
 
 
-## Getting Started
+### Getting Started
 
-### Simulations
+#### Evolution Simulations
 Models competative pooled growth of a population of genotypes with different fitnesses. This simulation may include many sources of noise, including growth noise, noise from cell transfers, DNA extraction, PCR, and sequencing.
 
-#### OPTIONS
+##### OPTIONS
 + **--input**: a .csv file, with the 1st column being fitness of each genotype, [x1,x2,...], and the 2nd column being initial cell number of each genotype at generation 0, [n1,n2,...]
 + **--t_seq** or **-i**: sequenced time-points, [0,t1,t2,...]
 + **--read_num_average_seq** or **-r**: average number of reads per genotype per sequencing time-point, [0,r1,r2,...]
@@ -22,12 +22,22 @@ Models competative pooled growth of a population of genotypes with different fit
 + **--pcr_cycles** or **-p**: number of cycles in PCR (default: 25) 
 + **--output_filename** or **-o**: prefix of output .csv files (default: output)
 
-#### OUTPUTS
+##### OUTPUTS
 + **output_filename_EvoSimulation_Read_Number.csv**: read number per genotype per sequencing time-point
 + **output_filename_EvoSimulation_Mean_Fitness.csv**: mean fitness per sequencing time-point
 + **output_filename_EvoSimulation_Input_Log.csv**: a record of all inputs
 
+##### Example
 
+
+
+#### Fitness Estimation
+
+##### OPTIONS
+
+##### OUTPUTS
+
+##### Example
 
 
 

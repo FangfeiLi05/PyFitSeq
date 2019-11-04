@@ -20,10 +20,15 @@ Models competative pooled growth of a population of genotypes with different fit
 + **--noise_option** or **-n**: five types of possible noise (cell growth, bottleneck transfer, DNA extraction, PCR, sequencing (default: ['growth', 'bottleneck_transfer', 'DNA_extraction', 'PCR', 'sequencing'])
 + **--dna_copies** or **-d**: average copy number of genome DNA per genotype as template in PCR (default: 500)
 + **--pcr_cycles** or **-p**: number of cycles in PCR (default: 25) 
-+  **output_filename** or **-o**: prefix of output .csv files (default: output)
++ **--output_filename** or **-o**: prefix of output .csv files (default: output)
 
 #### OUTPUTS
 + **output_filename_EvoSimulation_Read_Number.csv**: read number per genotype per sequencing time-point
 + **output_filename_EvoSimulation_Mean_Fitness.csv**: mean fitness per sequencing time-point
 + **output_filename_EvoSimulation_Input_Log.csv**: a record of all inputs
+
+
+
+
+
 

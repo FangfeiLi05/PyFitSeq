@@ -213,7 +213,7 @@ def main():
 
     args = parser.parse_args()
     read_num_seq = np.array(pd.read_csv(args.input, header=None), dtype=float)
-    t_seq = np.array(args.t_seq, dtype=int)
+    t_seq = np.array(args.t_seq, dtype=float)
     max_iter_num = args.max_iter_num
     kappa = args.kappa
     regression_num = args.regression_num

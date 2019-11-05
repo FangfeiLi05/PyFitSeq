@@ -13,7 +13,7 @@ FitSeq is a Python-based fitness estimation tool for pooled amplicon sequencing 
 
 ### 3. How to use FitSeq?
 #### 3.1. Evolution Simulations
-Models competative pooled growth of a population of genotypes with different fitnesses. This simulation may include many sources of noise, including growth noise, noise from cell transfers, DNA extraction, PCR, and sequencing.
+`evo_simulator.py` models competative pooled growth of a population of genotypes with different fitnesses. This simulation may include many sources of noise, including growth noise, noise from cell transfers, DNA extraction, PCR, and sequencing.
 
 ##### OPTIONS
 * `--input` or `-i`: a .csv file, with the 1st column being fitness of each genotype, [x1, x2, ...], and the 2nd column being initial cell number of each genotype at generation 0, [n1, n2, ...].
@@ -37,6 +37,8 @@ python evo_simulator.py -i Input.csv -t 0 3 6 9 12 -r 50 50 50 50 50 -o result
 ```      
 
 #### 3.2. Fitness Estimation
+
+`fitseq.py` estimates the fitness of each genotype from read-count time-series data.
 
 ##### OPTIONS
 * `--input` or `-i`: a .csv file, with each column being the read number per genotype at each sequencing time-point

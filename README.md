@@ -19,7 +19,7 @@ FitSeq is a Python-based fitness estimation tool for pooled amplicon sequencing 
 ##### OPTIONS
 * `--input` or `-i`: a .csv file
   + 1st column: fitness of each genotype, [x1, x2, ...]
-  + 2nd column: initial cell number of each genotype at generation 0, [n1, n2, ...].
+  + 2nd column: initial cell number of each genotype at generation 0, [n1, n2, ...]
 * `--t_seq` or `-t`: sequenced time-points (`format: 0 t1 t2 ...`)
 * `--read_num_average_seq` or `-r`: average number of reads per genotype per sequencing time-point (`format: 0 r1 r2 ...`)
 * `--noise_option` or `-n`: five types of possible noise (cell growth, bottleneck transfer, DNA extraction, PCR, sequencing (`default: growth bottleneck_transfer DNA_extraction PCR sequencing`)

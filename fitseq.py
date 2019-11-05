@@ -60,10 +60,7 @@ def fun_estimate_parameters(x, read_num_seq, t_seq, kappa=2.5):
                                        - (x_mean[i - 1] + 1) * np.log(x_mean[i - 1] + 1)))
 
         read_num_est_tempt = read_num_est_tempt * read_num_seq[:, i - 1] / read_depth_seq[i - 1] * read_depth_seq[i]
-        # read_num_est_tempt = read_num_est_tempt/np.sum(read_num_est_tempt)*read_depth_seq[i]
         read_num_seq_est[:, i] = np.max([read_num_est_tempt, read_num_min_seq[:, i]], axis=0)
-
-        # x_mean[i] = np.dot(x, read_num_seq_est[:,i])/read_depth_seq[i]
         x_mean[i] = np.dot(x, read_num_seq_est[:, i]) / np.sum(read_num_seq_est[:, i])
 
     pos1_r, pos1_c = np.where(read_num_seq[:, :-1] >= 20)
@@ -260,6 +257,12 @@ def main():
             opt_output_lineage = minimize(fun_likelihood_lineage, x0_lineage, method='BFGS',
                                           options={'disp': False, 'maxiter': 50})
             x_opt[i] = opt_output_lineage['x'][0]
+        ##############
+        # pos = np.true_divide(read_num_seq[:, 0]/np.sum(read_num_seq[:, 0], axis=0),
+        #                      np.sum(read_num_seq[:, 1], axis=0)) > 2**(t_seq[1]-t_seq[0])
+        pos = x_opt <= -1
+        x_opt[pos] = x0[pos]
+        ##############
 
         parameter_output = fun_estimate_parameters(x_opt, read_num_seq, t_seq, kappa)
         likelihood_log_sum_iter.append(np.sum(parameter_output['Likelihood_Log']))
@@ -269,7 +272,7 @@ def main():
 
     read_num_seq_est = parameter_output['Estimated_Read_Number']
     x_opt = x_opt - np.dot(read_num_seq_est[:, 0], x_opt) / np.sum(read_num_seq_est[:, 0])
-    # x_opt = (1+x_opt)/(1+np.dot(read_num_seq_est[:,0], x_opt)/np.sum(read_num_seq_est[:,0])) - 1
+    # x_opt = (1+x_opt)/(1+np.dot(read_num_seq_est[:, 0], x_opt)/np.sum(read_num_seq_est[:, 0])) - 1
     parameter_output_final = fun_estimate_parameters(x_opt, read_num_seq, t_seq)
     x_mean_est = parameter_output_final['Estimated_Mean_Fitness']
     likelihood_log = parameter_output_final['Likelihood_Log']

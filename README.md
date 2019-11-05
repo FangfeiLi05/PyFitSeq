@@ -40,7 +40,7 @@ FitSeq is a Python-based fitness estimation tool for pooled amplicon sequencing 
 ```
 python evo_simulator.py --help
 
-python evo_simulator.py -i Input.csv -t 0 3 6 9 12 -r 50 50 50 50 50 -o result
+python evo_simulator.py -i input.csv -t 0 3 6 9 12 -r 50 50 50 50 50 -o output
 ```      
 
 #### 3.2. Fitness Estimation
@@ -65,7 +65,7 @@ python evo_simulator.py -i Input.csv -t 0 3 6 9 12 -r 50 50 50 50 50 -o result
 ```
 python fitseq.py --help
 
-python fitseq.py -i result_EvoSimulation_Read_Number.csv -t 0 3 6 9 12 -o result
+python fitseq.py -i out_EvoSimulation_Read_Number.csv -t 0 3 6 9 12 -o output
 ```  
 
 

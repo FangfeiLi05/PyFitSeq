@@ -2,6 +2,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.7](https://img.shields.io/badge/python-3.7-green.svg?style=plastic)](https://www.python.org/)
 
+[![Python 3.7][https://img.shields.io/badge/python-3.7-green.svg?style=plastic]][https://www.python.org/]
+
 [![Python3][python-shield]][https://www.python.org/]
 
 ## FitSeq

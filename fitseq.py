@@ -219,7 +219,12 @@ def main():
     regression_num = args.regression_num
     output_filename = args.output_filename
 
-    read_num_seq[read_num_seq[:, 0] < 1] = 1
+    for i in range(regression_num):
+        pos_zero = np.where(read_num_seq[:, i] < 1)
+        read_num_seq[pos_zero, i] = 1
+    # pos_zero = np.where(read_num_seq[:, 0] < 1)
+    # read_num_seq[pos_zero, 0] = 1
+
     read_num_seq[read_num_seq == 0] = 1e-7
     read_depth_seq = np.sum(read_num_seq, axis=0)
     lineages_num, seq_num = read_num_seq.shape
@@ -232,13 +237,12 @@ def main():
     if regression_num == 2:
         x0_tempt = np.power(np.true_divide(read_freq_seq[:, 1], read_freq_seq[:, 0]), 1 / (t_seq[1] - t_seq[0])) - 1
     else:
-        x0_tempt = [regression_output.slope for i in range(lineages_num)
-                    for regression_output in [linregress(t_seq[0:regression_num],
-                                                         np.log(read_freq_seq[i, 0:regression_num]))]]
+        x0_tempt = [regression_output.slope for i in range(lineages_num) for regression_output in
+                    [linregress(t_seq[0:regression_num], np.log(read_freq_seq[i, 0:regression_num]))]]
         x0_tempt = np.exp(x0_tempt) - 1
 
     x0 = (1 + x0_tempt) / (1 + np.dot(read_freq_seq[:, 0], x0_tempt)) - 1  # Normalization
-    x_opt = (1 + x0_tempt) / (1 + np.dot(read_freq_seq[:, 0], x0_tempt)) - 1
+    x_opt = np.copy(x0)
 
     read_depth_seq_global = read_depth_seq
     t_seq_global = t_seq
@@ -257,12 +261,11 @@ def main():
             opt_output_lineage = minimize(fun_likelihood_lineage, x0_lineage, method='BFGS',
                                           options={'disp': False, 'maxiter': 50})
             x_opt[i] = opt_output_lineage['x'][0]
-        ##############
-        # pos = np.true_divide(read_num_seq[:, 0]/np.sum(read_num_seq[:, 0], axis=0),
-        #                      np.sum(read_num_seq[:, 1], axis=0)) > 2**(t_seq[1]-t_seq[0])
-        pos = x_opt <= -1
+        ####################
+        pos = (np.true_divide(read_num_seq[:, 0]/np.sum(read_num_seq[:, 0], axis=0),
+                              np.sum(read_num_seq[:, 1], axis=0)) > 2**(t_seq[1]-t_seq[0])) | (x_opt <= -1)
         x_opt[pos] = x0[pos]
-        ##############
+        ####################
 
         parameter_output = fun_estimate_parameters(x_opt, read_num_seq, t_seq, kappa)
         likelihood_log_sum_iter.append(np.sum(parameter_output['Likelihood_Log']))
@@ -272,7 +275,6 @@ def main():
 
     read_num_seq_est = parameter_output['Estimated_Read_Number']
     x_opt = x_opt - np.dot(read_num_seq_est[:, 0], x_opt) / np.sum(read_num_seq_est[:, 0])
-    # x_opt = (1+x_opt)/(1+np.dot(read_num_seq_est[:, 0], x_opt)/np.sum(read_num_seq_est[:, 0])) - 1
     parameter_output_final = fun_estimate_parameters(x_opt, read_num_seq, t_seq)
     x_mean_est = parameter_output_final['Estimated_Mean_Fitness']
     likelihood_log = parameter_output_final['Likelihood_Log']

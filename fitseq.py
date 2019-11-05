@@ -203,7 +203,7 @@ def main():
                                                  'experiment', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('-i', '--input', type=str, help='a .csv file: with each column being the read number per '
                                                         'genotype at each sequencing time-point')
-    parser.add_argument('-t', '--t_seq', nargs='*', type=int, help='sequenced time-points')
+    parser.add_argument('-t', '--t_seq', nargs='*', type=float, help='sequenced time-points')
     parser.add_argument('-m', '--max_iter_num', type=int, default=10,
                         help='maximum number of iterations in the optimization')
     parser.add_argument('-k', '--kappa', type=float, default=2.5,

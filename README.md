@@ -12,7 +12,7 @@ FitSeq is a Python-based fitness estimation tool for pooled amplicon sequencing 
 ### 2. How to install FitSeq?
 * Tested on MacBook Pro (3.1 GHz Intel Core i5), with Python 3.7.4.
 * Clone this repository by running `git clone https://github.com/FangfeiLi05/FitSeq.git` in terminal.
-* `cd` to the root directory of the project (the folder containing README.md)
+* `cd` to the root directory of the project (the folder containing README.md).
 * Install dependencies by running `pip install -r requirements.txt` in terminal.
 
 ### 3. How to use FitSeq?

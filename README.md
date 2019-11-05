@@ -1,3 +1,7 @@
+[![MIT License][license-shield]][license-url]
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python3][python-shield]][https://www.python.org/]
+
 ## FitSeq
 
 ### 1. What is FitSeq?

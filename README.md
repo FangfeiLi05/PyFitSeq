@@ -29,7 +29,7 @@ Models competative pooled growth of a population of genotypes with different fit
 * `output_filename_EvoSimulation_Mean_Fitness.csv`: mean fitness per sequencing time-point
 * `output_filename_EvoSimulation_Input_Log.csv`: a record of all inputs
 
-##### EXAMPLES
+##### EXAMPLE
 ```
 python evo_simulator.py --help
 
@@ -53,7 +53,7 @@ python evo_simulator.py -i Input.csv -t 0 3 6 9 12 -r 50 50 50 50 50 -o result
   + 3rd column: estimated mean fitness per sequencing time-point, [x_mean(0), x_mean(t1), ...]
   + 4th column: estimated reads number per genotype per sequencing time-point
 
-##### EXAMPLES
+##### EXAMPLE
 ```
 python fitseq.py --help
 

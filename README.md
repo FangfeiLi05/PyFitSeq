@@ -49,7 +49,7 @@ python evo_simulator.py -i Input.csv -t 0 3 6 9 12 -r 50 50 50 50 50 -o result
 * `output_filename_FitSeq_Result.csv`: 
   + 1st column: estimated fitness of each genotype, [x1, x2, ...]
   + 2nd column: log likelihood value of each genotype, [f1, f2, ...]
-  + 3rd column: estimated mean fitness per sequencing time-point, [x_mean(t0), x_mean(t1), ...]
+  + 3rd column: estimated mean fitness per sequencing time-point, [x_mean(0), x_mean(t1), ...]
   + 4th column: estimated reads number per genotype per sequencing time-point
 
 #### EXAMPLES

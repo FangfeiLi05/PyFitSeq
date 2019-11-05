@@ -12,8 +12,8 @@ def main():
     # PCR, AND SAMPLING ON SEQUENCER.
     #
     # OPTIONS
-    # --input: a .csv file, with the 1st column being fitness of each genotype [x1,x2,...], and the 2nd column being
-    #           initial cell number of each genotype at generation 0 [n1,n2,...]
+    # --input: a .csv file, with the 1st column being fitness of each genotype, [x1,x2,...], and the 2nd column being
+    #           initial cell number of each genotype at generation 0, [n1,n2,...]
     # --t_seq: sequenced time-points (format: 0 t1 t2 ...)
     # --read_num_average_seq: average number of reads per genotype per sequencing time-point (format: 0 r1 r2 ...)
     # --noise_option: five types of possible noise (cell growth, bottleneck transfer, DNA extraction, PCR, sequencing)

@@ -22,9 +22,9 @@ def fun_estimate_parameters(x, read_num_seq, t_seq, kappa=2.5):
     # MEAN FITNESS PER SEQUENCING TIME-POINT
     #
     # INPUTS
-    # --x: fitness of each genotype [x1, x2, ...]
+    # --x: fitness of each genotype, [x1, x2, ...]
     # --read_num_seq: read number per genotype per sequencing time-point
-    # --t_seq: sequenced time-points [0, t1, t2, ...]
+    # --t_seq: sequenced time-points, [0, t1, t2, ...]
     # --kappa: a noise parameter that characterizes the total noise introduced by growth, cell transfer, DNA extraction,
     #          PCR, and sequencing. (To measure kappa empirically, see the reference: Levy et al. Nature 2015 519,
     #          181-186.) (default: 2.5)

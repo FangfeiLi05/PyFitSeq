@@ -56,7 +56,7 @@ python evo_simulator.py -i Input.csv -t 0 3 6 9 12 -r 50 50 50 50 50 -o result
 ```
 python fitseq.py --help
 
-python fitseq.py -r result_EvoSimulation_Read_Number.csv -t 0 3 6 9 12 -o result
+python fitseq.py -i result_EvoSimulation_Read_Number.csv -t 0 3 6 9 12 -o result
 ```  
 
 

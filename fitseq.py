@@ -183,13 +183,13 @@ def main():
     #           (To measure kappa empirically, see the reference: Levy et al. Nature 2015 519,
     #           181-186.) (default: 2.5)
     # --regression_num: number of points used in initial linear regression (default: 2)
-    # --output_filename: prefix of output .csv files
+    # --output_filename: prefix of output .csv files (default: output)
     #
     # OUTPUTS
     # output_filename_FitSeq_Result.csv: 1st column: estimated fitness of each genotype, [x1, x2, ...],
     #                                    2nd column: log likelihood value of each genotype, [f1, f2, ...],
     #                                    3rd column: estimated mean fitness per sequencing time-point
-    #                                                [x_mean(t0), x_mean(t1), ...],
+    #                                                [x_mean(0), x_mean(t1), ...],
     #                                    4th column: estimated reads number per genotype per sequencing time-point
     # ------------------------------------------------------------------------------------------------------------------
     global read_num_seq_lineage_global

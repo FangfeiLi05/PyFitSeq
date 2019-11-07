@@ -44,7 +44,7 @@ def main():
     parser.add_argument('-d', '--dna_copies', type=int, default=500,
                         help='average copy number of genome DNA per genotype')
     parser.add_argument('-p', '--pcr_cycles', type=int, default=25, help='number of cycles in PCR')
-    parser.add_argument('-f', '--fitness_type', type=str, default='w',
+    parser.add_argument('-f', '--fitness_type', type=str, default='m',
                         help='type of fitness: Wrightian fitness (w), or Malthusian fitness (m)')
     parser.add_argument('-o', '--output_filename', type=str, default='output', help='prefix of output .csv files')
 

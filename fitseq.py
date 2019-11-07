@@ -281,7 +281,7 @@ def main():
                              'see the reference: Levy et al. Nature 2015 519, 181-186.)')
     parser.add_argument('-g', '--regression_num', type=int, default=2,
                         help='number of points used in initial linear regression')
-    parser.add_argument('-f', '--fitness_type', type=str, default='w',
+    parser.add_argument('-f', '--fitness_type', type=str, default='m',
                         help='type of fitness: Wrightian fitness (w), or Malthusian fitness (m)')
     parser.add_argument('-o', '--output_filename', type=str, default='output', help='prefix of output .csv files')
 

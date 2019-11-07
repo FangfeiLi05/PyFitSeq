@@ -29,6 +29,7 @@ FitSeq is a Python-based fitness estimation tool for pooled amplicon sequencing 
 * `--noise_option` or `-n`: five types of possible noise (cell growth, bottleneck transfer, DNA extraction, PCR, sequencing (`default: growth bottleneck_transfer DNA_extraction PCR sequencing`)
 * `--dna_copies` or `-d`: average copy number of genome DNA per genotype as template in PCR (`default: 500`)
 * `--pcr_cycles` or `-p`: number of cycles in PCR (`default: 25`) 
+* `--fitness_type` or `-f`: type of fitness: Wrightian fitness (w), or Malthusian fitness (m)' (`default: w`)
 * `--output_filename` or `-o`: prefix of output .csv files (`default: output`)
 
 ##### OUTPUTS
@@ -52,6 +53,7 @@ python evo_simulator.py -i input_EvoSimulation.csv -t 0 3 6 9 12 -r 50 50 50 50 
 * `--max_iter_num` or `-m`: maximum number of iterations in the optimization (`default: 10`)
 * `--kappa` or `-k`: a noise parameter that characterizes the total noise introduced by growth, cell transfer, DNA extraction, PCR, and sequencing. (To measure kappa empirically, see the reference: Levy et al. Nature 2015 519, 181-186.) (`default: 2.5`)
 * `--regression_num` or `-g`: number of points used in initial linear regression (`default: 2`)
+* `--fitness_type` or `-f`: type of fitness: Wrightian fitness (w), or Malthusian fitness (m)' (`default: w`)
 * `--output_filename` or `-o`: prefix of output .csv files (`default: output`)
 
 ##### OUTPUTS

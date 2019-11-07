@@ -7,7 +7,7 @@ import argparse
 
 def main():
     # ------------------------------------------------------------------------------------------------------------------
-    # SIMULATED COMPETITIVE POOLED GROWTH OF A POPULATION OF GENOTYPES WITH DIFFERENT FITNESS (WRIGHTIAN FITNESS).
+    # SIMULATED COMPETITIVE POOLED GROWTH OF A POPULATION OF GENOTYPES WITH DIFFERENT FITNESS.
     # THESE SIMULATIONS INCLUDE EXPERIMENTAL NOISE SUCH AS GROWTH NOISE, SAMPLING DURING BOTTLENECKS, DNA EXTRACTION,
     # PCR, AND SAMPLING ON SEQUENCER.
     #
@@ -20,6 +20,7 @@ def main():
     #                  (default: growth bottleneck_transfer DNA_extraction PCR sequencing)
     # --dna_copies: average copy number of genome DNA per genotype as template in PCR (default: 500)
     # --pcr_cycles: number of cycles in PCR (default: 25)
+    # --fitness_type: type of fitness: Wrightian fitness (w), or Malthusian fitness (m)' (default: w)
     # --output_filename: prefix of output .csv files (default: output)
     #
     # OUTPUTS
@@ -43,6 +44,8 @@ def main():
     parser.add_argument('-d', '--dna_copies', type=int, default=500,
                         help='average copy number of genome DNA per genotype')
     parser.add_argument('-p', '--pcr_cycles', type=int, default=25, help='number of cycles in PCR')
+    parser.add_argument('-f', '--fitness_type', type=str, default='w',
+                        help='type of fitness: Wrightian fitness (w), or Malthusian fitness (m)')
     parser.add_argument('-o', '--output_filename', type=str, default='output', help='prefix of output .csv files')
 
     args = parser.parse_args()
@@ -54,6 +57,7 @@ def main():
     noise_option = args.noise_option
     dna_copies = args.dna_copies
     pcr_cycles = args.pcr_cycles
+    fitness_type = args.fitness_type
     output_filename = args.output_filename
 
     delta_t = t_seq[1] - t_seq[0]
@@ -88,19 +92,35 @@ def main():
     x_mean = np.zeros(evo_num + 1)
     x_mean[0] = np.dot(cell_num_ini, x) / np.sum(cell_num_seq[:, 0])
 
-    for j in range(1, evo_num + 1):
-        pos = cell_num_seq[:, j - 1] != 0
-        x_rela = np.max([np.true_divide(1 + x[pos], 1 + x_mean[j - 1]), np.zeros(np.sum(pos))], axis=0)
-        cell_num_prev = cell_num_seq[pos, j - 1]
-        cell_num_current = f1(np.multiply(2 * cell_num_prev, x_rela))
-        cell_num_current = np.max([cell_num_current, cell_num_min_seq[pos, j]], axis=0)
+    if fitness_type == 'w':
+        for j in range(1, evo_num + 1):
+            pos = cell_num_seq[:, j - 1] != 0
+            x_rela = np.max([np.true_divide(1 + x[pos], 1 + x_mean[j - 1]), np.zeros(np.sum(pos))], axis=0)
+            cell_num_prev = cell_num_seq[pos, j - 1]
+            cell_num_current = f1(np.multiply(2 * cell_num_prev, x_rela))
+            cell_num_current = np.max([cell_num_current, cell_num_min_seq[pos, j]], axis=0)
 
-        if np.mod(j, delta_t) == 0:
-            ind = int(j / delta_t)
-            cell_num_saturated_seq[pos, ind] = cell_num_current  # !!!
-            cell_num_current = f2(cell_num_current / (2 ** delta_t))
-        cell_num_seq[pos, j] = cell_num_current
-        x_mean[j] = np.dot(x, cell_num_seq[:, j]) / np.sum(cell_num_seq[:, j])
+            if np.mod(j, delta_t) == 0:
+                ind = int(j / delta_t)
+                cell_num_saturated_seq[pos, ind] = cell_num_current  # !!!
+                cell_num_current = f2(cell_num_current / (2 ** delta_t))
+            cell_num_seq[pos, j] = cell_num_current
+            x_mean[j] = np.dot(x, cell_num_seq[:, j]) / np.sum(cell_num_seq[:, j])
+
+    elif fitness_type == 'm':
+        for j in range(1, evo_num + 1):
+            pos = cell_num_seq[:, j - 1] != 0
+            x_rela = x[pos] - x_mean[j - 1]
+            cell_num_prev = cell_num_seq[pos, j - 1]
+            cell_num_current = f1(np.multiply(2 * cell_num_prev, np.exp(x_rela)))
+            cell_num_current = np.max([cell_num_current, cell_num_min_seq[pos, j]], axis=0)
+
+            if np.mod(j, delta_t) == 0:
+                ind = int(j / delta_t)
+                cell_num_saturated_seq[pos, ind] = cell_num_current  # !!!
+                cell_num_current = f2(cell_num_current / (2 ** delta_t))
+            cell_num_seq[pos, j] = cell_num_current
+            x_mean[j] = np.dot(x, cell_num_seq[:, j]) / np.sum(cell_num_seq[:, j])
 
     # After-growth phase, with three possible noise involved: DNA extraction noise, PCR noise, sequencing noise
     if ('DNA_extraction' in noise_option) and ('PCR' in noise_option) and ('sequencing' in noise_option):

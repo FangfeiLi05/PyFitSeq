@@ -15,7 +15,7 @@ kappa_global = None
 x_mean_global = None
 
 
-def fun_estimate_parameters(x, read_num_seq, t_seq, kappa=2.5, fitness_type='w'):
+def fun_estimate_parameters(x, read_num_seq, t_seq, kappa=2.5, fitness_type='m'):
     # ------------------------------------------------------------------------------------------------------------------
     # A SUB-FUNCTION CALLED BY MAIN FUNCTION main() TO CALCULATE THE LOG LIKELIHOOD VALUE OF EACH GENOTYPE GIVEN ITS
     # FITNESS, THE ESTIMATED READ NUMBER PER GENOTYPE PER SEQUENCING TIME-POINT, AND THE ESTIMATED MEAN FITNESS PER
@@ -28,7 +28,7 @@ def fun_estimate_parameters(x, read_num_seq, t_seq, kappa=2.5, fitness_type='w')
     # --kappa: a noise parameter that characterizes the total noise introduced by growth, cell transfer, DNA extraction,
     #          PCR, and sequencing. (To measure kappa empirically, see the reference: Levy et al. Nature 2015 519,
     #          181-186.) (default: 2.5)
-    # --fitness_type: type of fitness: Wrightian fitness (w), or Malthusian fitness (m)' (default: w)
+    # --fitness_type: type of fitness: Wrightian fitness (w), or Malthusian fitness (m)' (default: m)
     #
     # OUTPUTS
     # --estimate_parameters_output: log likelihood value of each genotype,
@@ -251,7 +251,7 @@ def main():
     #           (To measure kappa empirically, see the reference: Levy et al. Nature 2015 519,
     #           181-186.) (default: 2.5)
     # --regression_num: number of points used in initial linear regression (default: 2)
-    # --fitness_type: type of fitness: Wrightian fitness (w), or Malthusian fitness (m)' (default: w)
+    # --fitness_type: type of fitness: Wrightian fitness (w), or Malthusian fitness (m)' (default: m)
     # --output_filename: prefix of output .csv files (default: output)
     #
     # OUTPUTS

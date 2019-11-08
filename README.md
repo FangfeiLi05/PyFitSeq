@@ -17,7 +17,7 @@ FitSeq is a Python-based fitness estimation tool for pooled amplicon sequencing 
 
 ### 3. How to use FitSeq?
 
-#### 3.1. Evolution Simulations
+#### 3.1. Evolution Simulation
 `evo_simulator.py` models competative pooled growth of a population of genotypes with different fitnesses. This simulation may include many sources of noise, including growth noise, noise from cell transfers, DNA extraction, PCR, and sequencing.
 
 ##### OPTIONS

@@ -6,7 +6,7 @@
 
 ### 1. What is PyFitSeq?
 
-PyFitSeq is a Python-based fitness estimation tool for pooled amplicon sequencing studies. FitSeq is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+PyFitSeq is a Python-based fitness estimation tool for pooled amplicon sequencing studies. PyFitSeq is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
 
 PyFitSeq is python recoded version of the MatLab tool FitSeq https://github.com/sashaflevy/Fit-Seq. If you use this software, please reference Li et al....
 

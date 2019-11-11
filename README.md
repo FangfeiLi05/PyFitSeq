@@ -35,7 +35,7 @@ It currently has two main functions:
   + 2nd column .csv: initial cell number of each genotype at generation 0, [n1, n2, ...]
 * `--t_seq` or `-t`: time-points evaluated in number generations (`format: 0 t1 t2 ...`)
 * `--read_num_average_seq` or `-r`: average number of reads per genotype for each time-point (`format: 0 r1 r2 ...`)
-* `--noise_option` or `-n`: which types of noise to include in the simulation (cell growth, bottleneck transfer, DNA extraction, PCR, sequencing (`default: growth bottleneck_transfer DNA_extraction PCR sequencing`)
+* `--noise_option` or `-n`: which types of noise to include in the simulation. Default is all sources of noise (`default: growth bottleneck_transfer DNA_extraction PCR sequencing`).
 * `--dna_copies` or `-d`: average genome copy number per genotype used as template in PCR (`default: 500`)
 * `--pcr_cycles` or `-p`: number of cycles of PCR (`default: 25`) 
 * `--fitness_type` or `-f`: type of fitness: Wrightian fitness (w), or Malthusian fitness (m)' (`default: m`)

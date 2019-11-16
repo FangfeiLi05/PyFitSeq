@@ -374,17 +374,21 @@ def main():
     x_mean_est = parameter_output_final['Estimated_Mean_Fitness']
     likelihood_log = parameter_output_final['Likelihood_Log']
 
+    #fitseq_output = {'Estimated_Fitness': x_opt,
+    #                 'Likelihood_Log': likelihood_log,
+    #                 'Estimated_Mean_Fitness': x_mean_est,
+    #                 'Estimated_Read_Number': read_num_seq_est.astype(int)}
     fitseq_output = {'Estimated_Fitness': x_opt,
                      'Likelihood_Log': likelihood_log,
-                     'Estimated_Mean_Fitness': x_mean_est,
-                     'Estimated_Read_Number': read_num_seq_est}
+                     'Estimated_Mean_Fitness': x_mean_est}
+    for i in range(read_num_seq_est.shape[1]):
+        fitseq_output['Estimated_Read_Number_t%d' % i] = read_num_seq_est[:, i].astype(int)
 
     tempt = list(itertools.zip_longest(*list(fitseq_output.values())))
     with open(output_filename + '_FitSeq.csv', 'w') as f:
         w = csv.writer(f)
         w.writerow(fitseq_output.keys())
         w.writerows(tempt)
-    return fitseq_output
 
 
 if __name__ == "__main__":

@@ -55,7 +55,7 @@ python evo_simulator.py --help
 ##### Examples
 ```
 python evo_simulator.py -i input_EvoSimulation.csv -t 0 3 6 9 12 -r 50 50 50 50 50 -o output
-python evo_simulator.py -i input_EvoSimulation.csv -t 0 2 4 8 10 -r 75 75 75 75 50 -n DNA_extraction PCR sequencing -d 300 -p 27 -f w -o output
+python evo_simulator.py -i input_EvoSimulation.csv -t 0 2 4 6 8 -r 75 75 75 75 50 -n DNA_extraction PCR sequencing -d 300 -p 27 -f w -o output
 ```      
 
 

@@ -13,7 +13,7 @@ It currently has two main functions:
 * `evo_simulator.py` performs simulations of competitve pooled growth of a population of genotypes.
 * `pyfitseq.py` calculates the fitness of each genotype from read-count time-series data.
     
-A walk-through is included as the jupyter notebook [here](https://github.com/FangfeiLi05/PyFitSeq/blob/master/fitseq_walkthrough.ipynb).
+A walk-through is included as the jupyter notebook [here](https://github.com/FangfeiLi05/PyFitSeq/blob/master/PyFitSeq_Walk_Through.ipynb).
 
 
 

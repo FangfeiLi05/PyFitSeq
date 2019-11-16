@@ -3,7 +3,7 @@
 [![Contact Info](https://img.shields.io/badge/Contact%20Info-fangfeili.fanny@gmail.com-orange.svg)]()
 
 
-## FitSeq
+## PyFitSeq
 
 ### 1. What is PyFitSeq?
 

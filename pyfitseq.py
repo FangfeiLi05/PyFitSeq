@@ -23,11 +23,12 @@ def fun_estimate_parameters(x, read_num_seq, t_seq, kappa=2.5, fitness_type='m')
     #
     # INPUTS
     # --x: fitness of each genotype, [x1, x2, ...]
-    # --read_num_seq: read number per genotype per sequencing time-point
-    # --t_seq: sequenced time-points, [0, t1, t2, ...]
-    # --kappa: a noise parameter that characterizes the total noise introduced by growth, cell transfer, DNA extraction,
-    #          PCR, and sequencing. (To measure kappa empirically, see the reference: Levy et al. Nature 2015 519,
-    #          181-186.) (default: 2.5)
+    # --read_num_seq: read number per genotype at each sequencing time-point
+    # --t_seq: sequenced time-points in number of generations, [0, t1, t2, ...]
+    # --kappa: a noise parameter that characterizes the total noise introduced by growth, cell transfer, DNA extraction, 
+    #          PCR, and sequencing (To measure kappa empirically, see the reference: [S. F. Levy, et al. Quantitative 
+    #          Evolutionary Dynamics Using High-resolution Lineage Tracking. Nature, 519: 181–186 (2015)].) 
+    # .        (default: 2.5)
     # --fitness_type: type of fitness: Wrightian fitness (w), or Malthusian fitness (m)' (default: m)
     #
     # OUTPUTS
@@ -243,23 +244,25 @@ def main():
     # ESTIMATE FITNESS OF EACH GENOTYPE IN A COMPETITIVE POOLED GROWTH EXPERIMENT
     #
     # OPTIONS
-    # --input: a .csv file, with each column being the read number per genotype at each sequencing time-point
-    # --t_seq: sequenced time-points (format: 0 t1 t2 ...)
-    # --max_iter_num: maximum number of iterations in the optimization (default: 10)
-    # --kappa: a noise parameter that characterizes the total noise
-    #           introduced by growth, cell transfer, DNA extraction, PCR, and sequencing.
-    #           (To measure kappa empirically, see the reference: Levy et al. Nature 2015 519,
-    #           181-186.) (default: 2.5)
-    # --regression_num: number of points used in initial linear regression (default: 2)
+    # --input: a .csv file, with each column being the read number per genotype at each sequenced time-point
+    # --t_seq: sequenced time-points in number of generations (format: 0 t1 t2 ...)
+    # --max_iter_num: maximum number of iterations in the optimization (Small numbers can reduce running time 
+    #                 and decrease accuracy.) (default: 10)
+    # --kappa: a noise parameter that characterizes the total noise introduced by growth, cell transfer, 
+    #          DNA extraction, PCR, and sequencing (To measure kappa empirically, see the reference: 
+    #          [S. F. Levy, et al. Quantitative Evolutionary Dynamics Using High-resolution Lineage Tracking. 
+    #          Nature, 519: 181–186 (2015)].) (default: 2.5)
+    # --regression_num: number of points used in the initial linear-regression-based fitness estimate (default: 2)
     # --fitness_type: type of fitness: Wrightian fitness (w), or Malthusian fitness (m)' (default: m)
     # --output_filename: prefix of output .csv files (default: output)
     #
     # OUTPUTS
     # output_filename_FitSeq_Result.csv: 1st column: estimated fitness of each genotype, [x1, x2, ...],
     #                                    2nd column: log likelihood value of each genotype, [f1, f2, ...],
-    #                                    3rd column: estimated mean fitness per sequencing time-point
+    #                                    3rd column: estimated mean fitness per sequenced time-point
     #                                                [x_mean(0), x_mean(t1), ...],
-    #                                    4th column: estimated reads number per genotype per sequencing time-point
+    #                                    4th column+: estimated reads number per genotype per sequencingtime-point, 
+    #                                                 with each time-point being a column
     # ------------------------------------------------------------------------------------------------------------------
     global read_num_seq_lineage_global
     global read_num_min_seq_lineage_global
@@ -271,16 +274,17 @@ def main():
     parser = argparse.ArgumentParser(description='Estimate fitness of each genotype in a competitive pooled growth '
                                                  'experiment', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('-i', '--input', type=str, help='a .csv file: with each column being the read number per '
-                                                        'genotype at each sequencing time-point')
-    parser.add_argument('-t', '--t_seq', nargs='*', type=float, help='sequenced time-points')
+                                                        'genotype at each sequenced time-point')
+    parser.add_argument('-t', '--t_seq', nargs='*', type=float, help='sequenced time-points in number of generations')
     parser.add_argument('-m', '--max_iter_num', type=int, default=10,
                         help='maximum number of iterations in the optimization')
     parser.add_argument('-k', '--kappa', type=float, default=2.5,
                         help='a noise parameter that characterizes the total noise introduced by growth, '
-                             'cell transfer, DNA extraction, PCR, and sequencing. (To measure kappa empirically, '
-                             'see the reference: Levy et al. Nature 2015 519, 181-186.)')
+                             'cell transfer, DNA extraction, PCR, and sequencing (To measure kappa empirically, '
+                             'see the reference: [S. F. Levy, et al. Quantitative Evolutionary Dynamics Using '
+                             'High-resolution Lineage Tracking. Nature, 519: 181–186 (2015)].)')
     parser.add_argument('-g', '--regression_num', type=int, default=2,
-                        help='number of points used in initial linear regression')
+                        help='number of points used in the initial linear-regression-based fitness estimate')
     parser.add_argument('-f', '--fitness_type', type=str, default='m',
                         help='type of fitness: Wrightian fitness (w), or Malthusian fitness (m)')
     parser.add_argument('-o', '--output_filename', type=str, default='output', help='prefix of output .csv files')

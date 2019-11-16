@@ -13,37 +13,36 @@ def main():
     #
     # OPTIONS
     # --input: a .csv file, with the 1st column being fitness of each genotype, [x1,x2,...], and the 2nd column being
-    #           initial cell number of each genotype at generation 0, [n1,n2,...]
-    # --t_seq: sequenced time-points (format: 0 t1 t2 ...)
-    # --read_num_average_seq: average number of reads per genotype per sequencing time-point (format: 0 r1 r2 ...)
-    # --noise_option: five types of possible noise (cell growth, bottleneck transfer, DNA extraction, PCR, sequencing)
-    #                  (default: growth bottleneck_transfer DNA_extraction PCR sequencing)
-    # --dna_copies: average copy number of genome DNA per genotype as template in PCR (default: 500)
-    # --pcr_cycles: number of cycles in PCR (default: 25)
+    #          initial cell number of each genotype at generation 0, [n1,n2,...]
+    # --t_seq: time-points evaluated in number of generations (format: 0 t1 t2 ...)
+    # --read_num_average_seq: average number of reads per genotype for each time-point (format: 0 r1 r2 ...)
+    # --noise_option: which types of noise to include in the simulation, default is all sources of noise 
+    #                 (`default: growth bottleneck_transfer DNA_extraction PCR sequencing`)
+    # --dna_copies: average genome copy number per genotype used as template in PCR (default: 500)
+    # --pcr_cycles: number of cycles of PCR (default: 25)
     # --fitness_type: type of fitness: Wrightian fitness (w), or Malthusian fitness (m)' (default: w)
     # --output_filename: prefix of output .csv files (default: output)
     #
     # OUTPUTS
-    # output_filename_EvoSimulation_Read_Number.csv: read number per genotype per sequencing time-point
-    # output_filename_EvoSimulation_Mean_Fitness.csv: mean fitness per sequencing time-point
+    # output_filename_EvoSimulation_Read_Number.csv: read number per genotype for each time-point
+    # output_filename_EvoSimulation_Mean_Fitness.csv: mean fitness for each time-point
     # output_filename_EvoSimulation_Input_Log.csv: a record of all inputs
     # ------------------------------------------------------------------------------------------------------------------
     parser = argparse.ArgumentParser(description='Simulated competitive pooled growth of a population of genotypes '
-                                                 'with different fitness',
+                                                 'with different fitnesses',
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('-i', '--input', type=str,
                         help='a .csv file: 1st column is fitness of each genotype, '
                              '2nd column is initial cell number of each genotype at generation 0')
-    parser.add_argument('-t', '--t_seq', nargs='*', type=int, help='sequenced time-points')
+    parser.add_argument('-t', '--t_seq', nargs='*', type=int, help='time-points evaluated in number of generations')
     parser.add_argument('-r', '--read_num_average_seq', nargs='*', type=int,
-                        help='average number of reads per genotype per sequencing time-point')
+                        help='average number of reads per genotype for each time-point')
     parser.add_argument('-n', '--noise_option', nargs='*', type=str,
                         default=['growth', 'bottleneck_transfer', 'DNA_extraction', 'PCR', 'sequencing'],
-                        help='five types of possible noise: cell growth, bottleneck transfer, DNA extraction, PCR, '
-                             'sequencing')
+                        help='which types of noise to include in the simulation, default is all sources of noise')
     parser.add_argument('-d', '--dna_copies', type=int, default=500,
-                        help='average copy number of genome DNA per genotype')
-    parser.add_argument('-p', '--pcr_cycles', type=int, default=25, help='number of cycles in PCR')
+                        help='average genome copy number per genotype used as template in PCR')
+    parser.add_argument('-p', '--pcr_cycles', type=int, default=25, help='number of cycles of PCR')
     parser.add_argument('-f', '--fitness_type', type=str, default='m',
                         help='type of fitness: Wrightian fitness (w), or Malthusian fitness (m)')
     parser.add_argument('-o', '--output_filename', type=str, default='output', help='prefix of output .csv files')

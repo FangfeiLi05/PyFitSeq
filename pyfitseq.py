@@ -120,7 +120,7 @@ def fun_likelihood_lineage_w(x):
     # --x: fitness of a genotype
     #
     # OUTPUTS
-    # --output: the negative log likelihood value of the genotype
+    # --likelihood_log_lineage: the negative log likelihood value of the genotype
     # ------------------------------------------------------------------------------------------------------------------
     global read_num_seq_lineage_global
     global read_num_min_seq_lineage_global
@@ -185,7 +185,7 @@ def fun_likelihood_lineage_m(x):
     # --x: fitness of a genotype
     #
     # OUTPUTS
-    # --output: the negative log likelihood value of the genotype
+    # --likelihood_log_lineage: the negative log likelihood value of the genotype
     # ------------------------------------------------------------------------------------------------------------------
     global read_num_seq_lineage_global
     global read_num_min_seq_lineage_global

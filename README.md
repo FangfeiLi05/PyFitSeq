@@ -86,7 +86,7 @@ python pyfitseq.py --help
 ##### Examples
 ```
 python pyfitseq.py -i output_EvoSimulation_Read_Number.csv -t 0 3 6 9 12 -o output
-python pyfitseq.py -i output_EvoSimulation_Read_Number.csv -t 0 3 9 12 15 -m 12 -k 2 -g 3 -f w -o output
+python pyfitseq.py -i output_EvoSimulation_Read_Number2.csv -t 0 2 6 8 -m 12 -k 2 -g 3 -f w -o output
 ```  
 
 

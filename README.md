@@ -7,7 +7,7 @@
 
 ### 1. What is PyFitSeq?
 
-PyFitSeq is a Python-based fitness estimation tool for pooled amplicon sequencing studies. PyFitSeq is Python re-coded version of the MatLab tool FitSeq https://github.com/sashaflevy/Fit-Seq. If you use this software, please reference: [F. Li, et al. Unbiased Fitness Estimation of Pooled Barcode or Amplicon Sequencing Studies. Cell Systems, 7: 521-525 (2018)](https://www.sciencedirect.com/science/article/pii/S2405471218303909?via%3Dihub). PyFitSeq is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+PyFitSeq is a Python-based fitness estimation tool for pooled amplicon sequencing studies. PyFitSeq is Python re-coded version of the MATLAB tool FitSeq https://github.com/sashaflevy/Fit-Seq. If you use this software, please reference: [F. Li, et al. Unbiased Fitness Estimation of Pooled Barcode or Amplicon Sequencing Studies. Cell Systems, 7: 521-525 (2018)](https://www.sciencedirect.com/science/article/pii/S2405471218303909?via%3Dihub). PyFitSeq is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
 
 It currently has two main functions:
 * `evo_simulator.py` performs simulations of competitve pooled growth of a population of genotypes.
@@ -17,7 +17,7 @@ A walk-through is included as the jupyter notebook [here](https://github.com/Fan
 
 
 
-### 2. How to install FitSeq?
+### 2. How to install PyFitSeq?
 * Python 3 is required. This version has been tested on a MacBook Pro (3.1 GHz Intel Core i5), with Python 3.7.4.
 * Clone this repository by running `git clone https://github.com/FangfeiLi05/PyFitSeq.git` in terminal.
 * `cd` to the root directory of the project (the folder containing `README.md`).
@@ -25,7 +25,7 @@ A walk-through is included as the jupyter notebook [here](https://github.com/Fan
 
 
 
-### 3. How to use FitSeq?
+### 3. How to use PyFitSeq?
 
 #### 3.1. Evolution Simulation
 `evo_simulator.py` models competative pooled growth of a population of genotypes with different fitnesses. This simulation can be made to include sources of noise, including growth noise, noise from cell transfers, DNA extraction, PCR, and sequencing.

@@ -309,7 +309,10 @@ def main():
     lineages_num, seq_num = read_num_seq.shape
     read_num_min_seq = np.zeros((lineages_num, seq_num))
     read_num_min_seq[:, 0] = read_num_seq[:, 0]
+    print(lineages_npm, seq_num)
+    print(t_seq.shape)
     for i in range(1, seq_num):
+        print(i, t_seq[i] - t_seq[i-1])
         read_num_min_seq[:, i] = read_num_min_seq[:, i - 1] / 2 ** (t_seq[i] - t_seq[i - 1])
 
     read_freq_seq = read_num_seq / read_depth_seq

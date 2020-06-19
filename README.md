@@ -22,6 +22,11 @@ A walk-through is included as the jupyter notebook [here](https://github.com/Fan
 * Clone this repository by running `git clone https://github.com/FangfeiLi05/PyFitSeq.git` in terminal.
 * `cd` to the root directory of the project (the folder containing `README.md`).
 * Install dependencies by running `pip install -r requirements.txt` in terminal.
+* Install pyfitseq by running `pip install .`
+
+**OR**
+* Run `pip install git+https://github.com/FangfeiLi05/PyFitSeq.git` to install
+  without cloning the repository.
 
 
 

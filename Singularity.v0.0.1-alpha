@@ -24,10 +24,6 @@ MAINTAINER darachm
 
     bash
 
-%files
-
-    * ./PyFitSeq
-
 %environment
 
     export LANG="C.UTF-8"
@@ -35,10 +31,6 @@ MAINTAINER darachm
     export PATH=${PATH}:/PyFitSeq
 
 %post
-
-    pwd
-
-    ls
 
     export LANG="C.UTF-8"
     export LANG_ALL="C.UTF-8"
@@ -48,9 +40,11 @@ MAINTAINER darachm
     apt -y install apt-utils git
     apt -y install python3 python3-pip
     #apt -y install gzip xz-utils bzip2 parallel gawk perl 
+    
+    git clone https://github.com/darachm/PyFitSeq.git /PyFitSeq
 
-    python3 -m pip install -r PyFitSeq/requirements.txt
-    chmod a+x PyFitSeq/evo_simulator.py PyFitSeq/pyfitseq.py 
+    python3 -m pip install -r /PyFitSeq/requirements.txt
+    chmod a+x /PyFitSeq/evo_simulator.py /PyFitSeq/pyfitseq.py 
 
 %test
 

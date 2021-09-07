@@ -23,7 +23,18 @@ A walk-through is included as the jupyter notebook [here](https://github.com/Fan
 * `cd` to the root directory of the project (the folder containing `README.md`).
 * Install dependencies by running `pip install -r requirements.txt` in terminal.
 
+#### 2a Alternative, use in a Singularity container
 
+With the closing of Singularity Hub there aren't yet publicly available
+containers for this, but you can build your own with a command like:
+
+    singularity build fitseq-latest.simg Singularity.fitseq-latest
+
+Then you can run on any 
+[computer running Singularity](https://sylabs.io/guides/3.8/user-guide/quick_start.html#quick-installation-steps),
+such as your local HPC, using a command like:
+
+    singularity exec fitseq-latest.simg pyfitseq.py -h
 
 ### 3. How to use PyFitSeq?
 

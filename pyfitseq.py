@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import numpy as np
 import pandas as pd
 import math
@@ -144,7 +146,7 @@ def fun_likelihood_lineage_w(x):
                                                - (x_mean_global[i - 1] + 1) * np.log(x_mean_global[i - 1] + 1)))
         read_num_lineage_est_tempt = (read_num_lineage_est_tempt * read_num_seq_lineage_global[i - 1]
                                       / read_depth_seq_global[i - 1] * read_depth_seq_global[i])
-        read_num_seq_lineage_est[i] = np.max([read_num_lineage_est_tempt, read_num_min_seq_lineage_global[i]])
+        read_num_seq_lineage_est[i] = np.max([read_num_lineage_est_tempt.item(), read_num_min_seq_lineage_global[i]])
 
     pos1 = np.where(read_num_seq_lineage_global[:-1] >= 20)[0]
     likelihood_log_seq_lineage[pos1 + 1] = (0.25 * np.log(read_num_seq_lineage_est[pos1 + 1])
@@ -207,7 +209,7 @@ def fun_likelihood_lineage_m(x):
                                             (x_mean_global[i] + x_mean_global[i - 1]) / 2)
         read_num_lineage_est_tempt = (read_num_lineage_est_tempt * read_num_seq_lineage_global[i - 1]
                                       / read_depth_seq_global[i - 1] * read_depth_seq_global[i])
-        read_num_seq_lineage_est[i] = np.max([read_num_lineage_est_tempt, read_num_min_seq_lineage_global[i]])
+        read_num_seq_lineage_est[i] = np.max([read_num_lineage_est_tempt.item(), read_num_min_seq_lineage_global[i]])
 
     pos1 = np.where(read_num_seq_lineage_global[:-1] >= 20)[0]
     likelihood_log_seq_lineage[pos1 + 1] = (0.25 * np.log(read_num_seq_lineage_est[pos1 + 1])

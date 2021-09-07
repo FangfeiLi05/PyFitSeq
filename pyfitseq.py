@@ -39,7 +39,7 @@ def fun_estimate_parameters(x, read_num_seq, t_seq, kappa=2.5, fitness_type='m')
     #                               estimated mean fitness per sequencing time-point, [x_mean(t0),x_mean(t1),...]
     # ------------------------------------------------------------------------------------------------------------------
     read_num_seq = read_num_seq.astype(float)
-    read_num_seq[read_num_seq == 0] = 1e-7
+    read_num_seq[read_num_seq == 0] = 1e-1
     read_depth_seq = np.sum(read_num_seq, axis=0)
     lineages_num, seq_num = read_num_seq.shape
 
@@ -306,7 +306,7 @@ def main():
     # pos_zero = np.where(read_num_seq[:, 0] < 1)
     # read_num_seq[pos_zero, 0] = 1
 
-    read_num_seq[read_num_seq == 0] = 1e-7
+    read_num_seq[read_num_seq == 0] = 1e-1
     read_depth_seq = np.sum(read_num_seq, axis=0)
     lineages_num, seq_num = read_num_seq.shape
     read_num_min_seq = np.zeros((lineages_num, seq_num))

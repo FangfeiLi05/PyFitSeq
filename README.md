@@ -25,7 +25,7 @@ A walk-through is included as the jupyter notebook [here](https://github.com/Fan
 * Install pyfitseq by running `pip install .`
 
 **OR**
-* Run `pip install git+https://github.com/FangfeiLi05/PyFitSeq.git` to install
+* Run `python3 -m pip install git+https://github.com/darachm/PyFitSeq.git` to install
   without cloning the repository.
 
 #### 2a Alternative, use in a Singularity container

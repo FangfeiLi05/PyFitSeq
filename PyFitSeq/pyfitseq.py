@@ -342,7 +342,8 @@ def main():
     step_size = 1 / lineages_num
     iter_num = 0
 
-    while (likelihood_log_sum_iter[-1] - likelihood_log_sum_iter[-2] >= step_size) and (iter_num <= max_iter_num):
+    #while (likelihood_log_sum_iter[-1] - likelihood_log_sum_iter[-2] >= step_size) and (iter_num <= max_iter_num):
+    while (iter_num <= 6):
         if fitness_type == 'w':
             for i in range(lineages_num):
                 x0_lineage = x_opt[i]
